@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>User Management System</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!--Header-->
+    <header id="header">
+        <nav>
+            <div class="container">
+                <div class="text-center">
+                    <a href="/" class="nav-brand text-dark">User Management System</a>
+                </div>
+            </div>
+
+        </nav>
+    </header>
+  <!--/Header-->
+
+  <!-- Main Section -->
+  <main id="site-main">
+     <div class="container">
+        <div class="box-nav d-flex justify-between">
+           <a href="/add_user" class="border-shadow">
+            <span class="text-gradiant">
+                New User<i class="fa-solid fa-user"></i>
+            </span>
+           </a>
+        </div>
+      <!--form handling-->
+      <form method="POST" action="/">
+        <table class="table">
+            <thead class="thead-dark">
+             
+             <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>EMAIL</th>
+              <th>Gender</th>
+              <th>Status</th>
+              <th>Acttion</th>
+             </tr>
+            </thead>
+            <tbody>
+            <% for(let i=0;i<users.length;i++){ %>
+              <tr>
+                <td><%= i + 1 %></td>
+                <td><%=users[i].name %></td>
+                <td><%=users[i].email %></td>
+                <td><%= users[i].gender %></td>
+                <td><%= users[i].status %></td>
+                <td>
+                <a href="/update_user?id=<%= users[i]._id %>" class="btn border-shadow update">
+                    <span class="text-gradiant"><i class="fas fa-pencil-alt"></i></span>
+                </a>
+                <a  class="btn border-shadow delete" data-id = <%= users[i]._id %> >
+                    <span class="text-gradiant"><i class="fas fa-times"></i></span>
+                </a>
+
+                </td>
+                 
+                
+              </tr>
+            <% } %>
+            </tbody>
+        </table>
+      </form>
+   </div>
+  </main>
+  <!-- /Main Section -->
+    
+
+  
+  <script defer src="scr.js"></script>
+</body>
+</html>
