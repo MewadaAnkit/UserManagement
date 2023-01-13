@@ -4,7 +4,7 @@ const express = require('express');
 const controller = require('../controller/controller')
 route.get("/",(req,res)=>{
     //make a get request to the api users
-    axios.get('https://apimyuser4747.herokuapp.com/api/users')
+    axios.get('https://userapi-wyqy.onrender.com/api/users')
       .then(function(response){
         //console.log(response)
         res.render("index",{users:response.data})
@@ -16,7 +16,7 @@ route.get("/add_user",(req,res)=>{
 })
 
 route.get("/update_user",(req,res)=>{
-    axios.get('https://apimyuser4747.herokuapp.com/api/users',{params:{id:req.query.id}})
+    axios.get('https://userapi-wyqy.onrender.com/api/users',{params:{id:req.query.id}})
     .then(function(userdata){
         res.render("update_user",{user:userdata.data})
     }).catch(err =>{
